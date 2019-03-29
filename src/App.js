@@ -24,7 +24,7 @@ class App extends Component {
     let temp = Object.assign([], this.state.post)
     
     //---------checking input is a valid url and title is of length greater than 1------------------------------ 
-    if(this.state.url.match(/\.(jpeg|jpg|gif|png|svg|tiff|bmp)$/) === null || this.state.url.match(/^(http|https|www)/) === null)
+    if(this.state.url.match(/[\w-]+\.jpeg|jpg|gif|png|svg|tiff|bmp/g) === null || this.state.url.match(/^(http|https|www)/) === null)
       alert("Enter valid image url")
     else if (this.state.name.length <= 1)
       alert("Enter valid Name for image")
@@ -40,8 +40,8 @@ class App extends Component {
         <div className="inputfield"><br/>
           <input className="urlInput" type="text" placeholder="Image URL" onChange={this.urlHandler.bind(this)}/><br/>
           <input className="aboutInput" type="text" placeholder="Title" onChange={this.nameHandler.bind(this)}/>
-          <input className="post" type="button" value="Post" onClick={this.postHandler.bind(this)}/>
-        </div><br/><br/>
+          <input className="post" type="button" value="New Post" onClick={this.postHandler.bind(this)}/>
+        </div>
       {/*-------------- Rendering the posts containing Image and its Title ----------*/}  
         <div>
           {
